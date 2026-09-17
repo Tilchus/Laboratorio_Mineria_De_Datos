@@ -6,8 +6,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: mineria_mysql
-      MYSQL_USER: alumno
-      MYSQL_PASSWORD: alumno123
+      MYSQL_USER: tilcel
+      MYSQL_PASSWORD: mineria2607
     ports:
       - "3306:3306"
     volumes:
@@ -18,9 +18,9 @@ services:
     container_name: mineria-postgres
     restart: unless-stopped
     environment:
-      POSTGRES_DB: mineria_pg
-      POSTGRES_USER: alumno
-      POSTGRES_PASSWORD: alumno123
+      POSTGRES_DB: dataset_mineria
+      POSTGRES_USER: tilcel
+      POSTGRES_PASSWORD: mineria2607
     ports:
       - "5432:5432"
     volumes:

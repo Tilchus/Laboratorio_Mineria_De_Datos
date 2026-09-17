@@ -1,12 +1,12 @@
 import pandas as pd
 from sqlalchemy import create_engine, text
 
-# Conexión usando las credenciales del laboratorio Docker
-engine = create_engine("postgresql+psycopg://alumno:alumno123@localhost:5432/mineria_pg")
+# Conexión usando tus nuevas credenciales personalizadas
+engine = create_engine("postgresql+psycopg://tilcel:mineria2607@localhost:5432/dataset_mineria")
 
-# Abrir una conexión explícita y ejecutar los comandos SQL
+# Ejecutar SQL con la sintaxis de SQLAlchemy 2.0+
 with engine.begin() as conn:
-    # 1. Crear una tabla de prueba
+    # 1. Crear tabla
     conn.execute(text("""
         CREATE TABLE IF NOT EXISTS verificacion_laboratorio (
             id SERIAL PRIMARY KEY, 
@@ -14,11 +14,11 @@ with engine.begin() as conn:
         );
     """))
 
-    # 2. Insertar un registro de prueba
-    conn.execute(text("INSERT INTO verificacion_laboratorio (mensaje) VALUES ('PostgreSQL + Python operativo');"))
+    # 2. Insertar fila
+    conn.execute(text("INSERT INTO verificacion_laboratorio (mensaje) VALUES ('Base de datos dataset_mineria operativa');"))
 
-# 3. Leer la tabla directamente desde Pandas
+# 3. Cargar en Pandas
 df = pd.read_sql("SELECT * FROM verificacion_laboratorio", engine)
 
-print("\n--- DATOS CARGADOS EN PANDAS CON ÉXITO ---")
+print("\n--- DATOS CARGADOS EN PANDAS ---")
 print(df)
